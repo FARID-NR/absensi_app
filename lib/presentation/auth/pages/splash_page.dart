@@ -1,5 +1,7 @@
 import 'package:absensi_app/core/core.dart';
+import 'package:absensi_app/data/datasources/auth_local_datasource.dart';
 import 'package:absensi_app/presentation/auth/pages/login_page.dart';
+import 'package:absensi_app/presentation/home/pages/main_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -18,17 +20,48 @@ class _SplashPageState extends State<SplashPage> {
     );
     return Scaffold(
       backgroundColor: AppColors.primary,
-      body: Column(
-        children: [
-          const Spacer(),
-          Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: Assets.images.logoWhite.image(),
-          ),
-          const Spacer(),
-          const SpaceHeight(20.0),
-        ],
-      ),
+      body: FutureBuilder(
+        future: AuthLocalDatasource().isAuth(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Column(
+              children: [
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.all(50.0),
+                  child: Assets.images.logoWhite.image(),
+                ),
+                const Spacer(),
+                const SpaceHeight(20.0),
+              ],
+            );
+          }
+          if (snapshot.hasData) {
+            if (snapshot.data! == true) {
+              Future.delayed(
+                const Duration(seconds: 2),
+                () => context.pushReplacement(const MainPage())
+              );
+            } else {
+              Future.delayed(
+                const Duration(seconds: 2),
+                () => context.pushReplacement(const LoginPage()),
+              );
+            }
+        }
+        return Column(
+              children: [
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.all(50.0),
+                  child: Assets.images.logoWhite.image(),
+                ),
+                const Spacer(),
+                const SpaceHeight(20.0),
+              ],
+            );
+        }
+      )
     );
   }
 }

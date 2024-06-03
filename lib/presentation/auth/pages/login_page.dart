@@ -1,6 +1,10 @@
 import 'package:absensi_app/core/core.dart';
+import 'package:absensi_app/data/datasources/auth_local_datasource.dart';
+import 'package:absensi_app/data/models/response/auth_response_model.dart';
+import 'package:absensi_app/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:absensi_app/presentation/home/pages/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -61,11 +65,45 @@ class _LoginPageState extends State<LoginPage> {
             obscureText: true,
           ),
           const SpaceHeight(80.0),
-          Button.filled(
-            onPressed: () {
-              context.pushReplacement(const MainPage());
+          BlocListener<LoginBloc, LoginState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                orElse: () {},
+                loaded: (data) {
+                  AuthLocalDatasource().saveAuthData(data);
+                  context.pushReplacement(const MainPage());
+                },
+                error: (error) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(error),
+                      backgroundColor: AppColors.red,
+                    ),
+                  );
+                },
+              );
             },
-            label: 'Sign In',
+            child: BlocBuilder<LoginBloc, LoginState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () {
+                    return Button.filled(
+                      onPressed: () {
+                        // context.pushReplacement(const MainPage());
+                        context.read<LoginBloc>().add(LoginEvent.login(
+                            emailController.text, passwordController.text));
+                      },
+                      label: 'Sign In',
+                    );
+                  },
+                  loading: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ],
       ),
