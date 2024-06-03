@@ -22,6 +22,16 @@ class AuthResponseModel {
         "user": user?.toMap(),
         "token": token,
     };
+
+  AuthResponseModel copyWith({
+    User? user,
+    String? token,
+  }) {
+    return AuthResponseModel(
+      user: user ?? this.user,
+      token: token ?? this.token,
+    );
+  }
 }
 
 class User {
