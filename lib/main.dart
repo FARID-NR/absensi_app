@@ -1,9 +1,14 @@
 import 'package:absensi_app/core/core.dart';
+import 'package:absensi_app/data/datasources/attendance_remote_datasource.dart';
 import 'package:absensi_app/data/datasources/auth_remote_datasource.dart';
 import 'package:absensi_app/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:absensi_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:absensi_app/presentation/auth/pages/splash_page.dart';
-import 'package:absensi_app/presentation/home/bloc/bloc/update_user_register_face_bloc.dart';
+import 'package:absensi_app/presentation/home/bloc/checkin_attendance/checkin_attendance_bloc.dart';
+import 'package:absensi_app/presentation/home/bloc/checkout_attendance/checkout_attendance_bloc.dart';
+import 'package:absensi_app/presentation/home/bloc/get_company/get_company_bloc.dart';
+import 'package:absensi_app/presentation/home/bloc/is_checkdin/is_checkdin_bloc.dart';
+import 'package:absensi_app/presentation/home/bloc/update_user_register/update_user_register_face_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,6 +33,18 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => UpdateUserRegisterFaceBloc(AuthRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => GetCompanyBloc(AttendanceRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => IsCheckdinBloc(AttendanceRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => CheckinAttendanceBloc(AttendanceRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => CheckoutAttendanceBloc(AttendanceRemoteDatasource()),
         ),
       ],
       child: MaterialApp(

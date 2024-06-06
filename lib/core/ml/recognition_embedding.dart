@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class RecognitionEmbedding {
   Rect location;
-  final List<double> embadding;
+  final List<double> embedding;
   
-  RecognitionEmbedding(this.location, this.embadding);
+  RecognitionEmbedding(this.location, this.embedding);
   
 }

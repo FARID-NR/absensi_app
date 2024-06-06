@@ -49,7 +49,7 @@ class Recognizer {
       for (int h = 0; h < height; h++) {
         for (int w = 0; w < width; w++) {
           int index = c * height * width + h * width + w;
-          reshapedArray[index] = float32Array[c * height * width + h * width + w] - 127.5 / 127.5;
+          reshapedArray[index] = (float32Array[c * height * width + h * width + w] - 127.5) / 127.5;
         }
       }
     }

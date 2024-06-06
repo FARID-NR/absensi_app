@@ -1,6 +1,9 @@
 import 'package:absensi_app/data/datasources/auth_local_datasource.dart';
+import 'package:absensi_app/presentation/home/pages/checkin_page.dart';
+import 'package:absensi_app/presentation/home/pages/checkout_page.dart';
 import 'package:absensi_app/presentation/home/pages/register_face_attendance.dart';
 import 'package:absensi_app/presentation/home/pages/setting_page.dart';
+import 'package:detect_fake_location/detect_fake_location.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/core.dart';
@@ -69,14 +72,24 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SpaceWidth(12.0),
-                  const Expanded(
-                    child: Text(
-                      'Hello, Chou Sensei',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: AppColors.white,
-                      ),
-                      maxLines: 2,
+                  Expanded(
+                    child: FutureBuilder(
+                      future: AuthLocalDatasource().getAuthData(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Text('Loading....');
+                        } else {
+                          final user = snapshot.data?.user;
+                          return Text(
+                            'Halo, ${user?.name ?? 'Hello'}',
+                            style: const TextStyle(
+                              fontSize: 18.0,
+                              color: AppColors.white
+                            ),
+                            maxLines: 2,
+                          );
+                        }
+                      },
                     ),
                   ),
                   IconButton(
@@ -146,12 +159,68 @@ class _HomePageState extends State<HomePage> {
                   MenuButton(
                     label: 'Datang',
                     iconPath: Assets.icons.menu.datang.path,
-                    onPressed: () {},
+                    onPressed: () async {
+                      // Deteksin lokasi palsu
+                      bool isFakeLocation = await DetectFakeLocation().detectFakeLocation();
+
+                      // Jika lokasi palsu terdeteksi
+                      if (isFakeLocation) {
+                        // Tampilkan peringatan lokasi palsu
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Warning'),
+                              content: const Text('Location is fake'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          } 
+                        );
+                      } else {
+                        // Jika lokasi benar
+                        context.push(const CheckinPage());
+                      }
+                    },
                   ),
                   MenuButton(
                     label: 'Pulang',
                     iconPath: Assets.icons.menu.pulang.path,
-                    onPressed: () {},
+                    onPressed: () async {
+                       // Deteksin lokasi palsu
+                      bool isFakeLocation = await DetectFakeLocation().detectFakeLocation();
+
+                      // Jika lokasi palsu terdeteksi
+                      if (isFakeLocation) {
+                        // Tampilkan peringatan lokasi palsu
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Warning'),
+                              content: const Text('Location is fake'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          } 
+                        );
+                      } else {
+                        // Jika lokasi benar
+                        context.push(const CheckoutPage());
+                      }
+                    },
                   ),
                   MenuButton(
                     label: 'Izin',

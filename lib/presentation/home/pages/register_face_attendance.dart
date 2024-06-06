@@ -3,7 +3,7 @@ import 'package:absensi_app/core/ml/recognition_embedding.dart';
 import 'package:absensi_app/core/ml/recognizer.dart';
 import 'package:absensi_app/data/datasources/auth_local_datasource.dart';
 import 'package:absensi_app/presentation/auth/bloc/logout/logout_bloc.dart';
-import 'package:absensi_app/presentation/home/bloc/bloc/update_user_register_face_bloc.dart';
+import 'package:absensi_app/presentation/home/bloc/update_user_register/update_user_register_face_bloc.dart';
 import 'package:absensi_app/presentation/home/pages/main_page.dart';
 import 'package:absensi_app/presentation/home/widgets/face_detector_painter.dart';
 import 'package:camera/camera.dart';
@@ -263,7 +263,7 @@ class _RegisterFaceAttendancePageState extends State<RegisterFaceAttendancePage>
                               context.read<UpdateUserRegisterFaceBloc>().add(
                                   UpdateUserRegisterFaceEvent
                                       .updateUserProfileRegisterFace(
-                                          recognition.embadding.join(','),
+                                          recognition.embedding.join(','),
                                           null));
                             },
                             label: 'Register');
