@@ -131,15 +131,11 @@ class _AttendanceCheckinPageState extends State<CheckinPage> {
       bool isValid = await recognizer.isValidFace(recognition.embedding);
 
       // Perbarui status wajah dan pesan teks berdasarkan hasil pengenalan
-      if (isValid) {
+      if (mounted) {
         setState(() {
-          isFaceRegistered = true;
-          faceStatusMessage = 'Wajah sudah terdaftar';
-        });
-      } else {
-        setState(() {
-          isFaceRegistered = false;
-          faceStatusMessage = 'Wajah belum terdaftar';
+          isFaceRegistered = isValid;
+          faceStatusMessage =
+              isValid ? 'Wajah sudah terdaftar' : 'Wajah belum terdaftar';
         });
       }
     }
@@ -301,7 +297,9 @@ class _AttendanceCheckinPageState extends State<CheckinPage> {
       latitude = locationData.latitude;
       longitude = locationData.longitude;
 
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     } on PlatformException catch (e) {
       if (e.code == 'IO_ERROR') {
         debugPrint(

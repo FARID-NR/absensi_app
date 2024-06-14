@@ -4,6 +4,6 @@ part of 'is_checkdin_bloc.dart';
 class IsCheckdinState with _$IsCheckdinState {
   const factory IsCheckdinState.initial() = _Initial;
   const factory IsCheckdinState.loading() = _Loading;
-  const factory IsCheckdinState.loaded(bool data) = _Loaded;
+  const factory IsCheckdinState.loaded(StatusAbsent data) = _Loaded;
   const factory IsCheckdinState.error(String message) = _Error;
 }

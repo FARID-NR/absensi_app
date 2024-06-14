@@ -1,6 +1,9 @@
 import 'package:absensi_app/core/core.dart';
 import 'package:absensi_app/data/datasources/attendance_remote_datasource.dart';
 import 'package:absensi_app/data/datasources/auth_remote_datasource.dart';
+import 'package:absensi_app/data/datasources/firebase_messaging_remote_datasource.dart';
+import 'package:absensi_app/data/datasources/permission_remote_datasource.dart';
+import 'package:absensi_app/firebase_options.dart';
 import 'package:absensi_app/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:absensi_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:absensi_app/presentation/auth/pages/splash_page.dart';
@@ -8,12 +11,19 @@ import 'package:absensi_app/presentation/home/bloc/checkin_attendance/checkin_at
 import 'package:absensi_app/presentation/home/bloc/checkout_attendance/checkout_attendance_bloc.dart';
 import 'package:absensi_app/presentation/home/bloc/get_company/get_company_bloc.dart';
 import 'package:absensi_app/presentation/home/bloc/is_checkdin/is_checkdin_bloc.dart';
+import 'package:absensi_app/presentation/home/bloc/permissions/permissions_bloc.dart';
 import 'package:absensi_app/presentation/home/bloc/update_user_register/update_user_register_face_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseMessagingRemoteDatasource().initialize();
   runApp(const MyApp());
 }
 
@@ -45,6 +55,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CheckoutAttendanceBloc(AttendanceRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => PermissionsBloc(PermissionRemoteDatasource()),
         ),
       ],
       child: MaterialApp(

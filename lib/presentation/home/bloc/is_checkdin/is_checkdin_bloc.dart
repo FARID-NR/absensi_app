@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:absensi_app/data/datasources/attendance_remote_datasource.dart';
+import 'package:absensi_app/presentation/home/model/status_absent.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -19,7 +20,11 @@ class IsCheckdinBloc extends Bloc<IsCheckdinEvent, IsCheckdinState> {
       final result = await datasource.isCheckdin();
       result.fold(
         (l) => emit(_Error(l)),
-        (r) => emit(_Loaded(r)),
+        (r) => emit(_Loaded(StatusAbsent(
+          isCheckdin: r.$1, 
+          isCheckedout: r.$2)
+          )
+        ),
       );
     });
   }

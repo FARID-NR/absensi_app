@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'is_checkdin_bloc.dart';
+part of 'permissions_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,59 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$IsCheckdinEvent {
+mixin _$PermissionsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() isCheckIn,
+    required TResult Function(String date, String reason, XFile? image)
+        addPermissions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? isCheckIn,
+    TResult? Function(String date, String reason, XFile? image)? addPermissions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? isCheckIn,
+    TResult Function(String date, String reason, XFile? image)? addPermissions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_IsCheckIn value) isCheckIn,
+    required TResult Function(_AddPermissions value) addPermissions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_IsCheckIn value)? isCheckIn,
+    TResult? Function(_AddPermissions value)? addPermissions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_IsCheckIn value)? isCheckIn,
+    TResult Function(_AddPermissions value)? addPermissions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $IsCheckdinEventCopyWith<$Res> {
-  factory $IsCheckdinEventCopyWith(
-          IsCheckdinEvent value, $Res Function(IsCheckdinEvent) then) =
-      _$IsCheckdinEventCopyWithImpl<$Res, IsCheckdinEvent>;
+abstract class $PermissionsEventCopyWith<$Res> {
+  factory $PermissionsEventCopyWith(
+          PermissionsEvent value, $Res Function(PermissionsEvent) then) =
+      _$PermissionsEventCopyWithImpl<$Res, PermissionsEvent>;
 }
 
 /// @nodoc
-class _$IsCheckdinEventCopyWithImpl<$Res, $Val extends IsCheckdinEvent>
-    implements $IsCheckdinEventCopyWith<$Res> {
-  _$IsCheckdinEventCopyWithImpl(this._value, this._then);
+class _$PermissionsEventCopyWithImpl<$Res, $Val extends PermissionsEvent>
+    implements $PermissionsEventCopyWith<$Res> {
+  _$PermissionsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +84,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$IsCheckdinEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$PermissionsEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -97,7 +98,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'IsCheckdinEvent.started()';
+    return 'PermissionsEvent.started()';
   }
 
   @override
@@ -113,7 +114,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() isCheckIn,
+    required TResult Function(String date, String reason, XFile? image)
+        addPermissions,
   }) {
     return started();
   }
@@ -122,7 +124,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? isCheckIn,
+    TResult? Function(String date, String reason, XFile? image)? addPermissions,
   }) {
     return started?.call();
   }
@@ -131,7 +133,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? isCheckIn,
+    TResult Function(String date, String reason, XFile? image)? addPermissions,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,7 +146,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_IsCheckIn value) isCheckIn,
+    required TResult Function(_AddPermissions value) addPermissions,
   }) {
     return started(this);
   }
@@ -153,7 +155,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_IsCheckIn value)? isCheckIn,
+    TResult? Function(_AddPermissions value)? addPermissions,
   }) {
     return started?.call(this);
   }
@@ -162,7 +164,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_IsCheckIn value)? isCheckIn,
+    TResult Function(_AddPermissions value)? addPermissions,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,72 +174,117 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements IsCheckdinEvent {
+abstract class _Started implements PermissionsEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$IsCheckInImplCopyWith<$Res> {
-  factory _$$IsCheckInImplCopyWith(
-          _$IsCheckInImpl value, $Res Function(_$IsCheckInImpl) then) =
-      __$$IsCheckInImplCopyWithImpl<$Res>;
+abstract class _$$AddPermissionsImplCopyWith<$Res> {
+  factory _$$AddPermissionsImplCopyWith(_$AddPermissionsImpl value,
+          $Res Function(_$AddPermissionsImpl) then) =
+      __$$AddPermissionsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String date, String reason, XFile? image});
 }
 
 /// @nodoc
-class __$$IsCheckInImplCopyWithImpl<$Res>
-    extends _$IsCheckdinEventCopyWithImpl<$Res, _$IsCheckInImpl>
-    implements _$$IsCheckInImplCopyWith<$Res> {
-  __$$IsCheckInImplCopyWithImpl(
-      _$IsCheckInImpl _value, $Res Function(_$IsCheckInImpl) _then)
+class __$$AddPermissionsImplCopyWithImpl<$Res>
+    extends _$PermissionsEventCopyWithImpl<$Res, _$AddPermissionsImpl>
+    implements _$$AddPermissionsImplCopyWith<$Res> {
+  __$$AddPermissionsImplCopyWithImpl(
+      _$AddPermissionsImpl _value, $Res Function(_$AddPermissionsImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? reason = null,
+    Object? image = freezed,
+  }) {
+    return _then(_$AddPermissionsImpl(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      reason: null == reason
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$IsCheckInImpl implements _IsCheckIn {
-  const _$IsCheckInImpl();
+class _$AddPermissionsImpl implements _AddPermissions {
+  const _$AddPermissionsImpl(
+      {required this.date, required this.reason, required this.image});
+
+  @override
+  final String date;
+  @override
+  final String reason;
+  @override
+  final XFile? image;
 
   @override
   String toString() {
-    return 'IsCheckdinEvent.isCheckIn()';
+    return 'PermissionsEvent.addPermissions(date: $date, reason: $reason, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IsCheckInImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AddPermissionsImpl &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.reason, reason) || other.reason == reason) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, date, reason, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddPermissionsImplCopyWith<_$AddPermissionsImpl> get copyWith =>
+      __$$AddPermissionsImplCopyWithImpl<_$AddPermissionsImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() isCheckIn,
+    required TResult Function(String date, String reason, XFile? image)
+        addPermissions,
   }) {
-    return isCheckIn();
+    return addPermissions(date, reason, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? isCheckIn,
+    TResult? Function(String date, String reason, XFile? image)? addPermissions,
   }) {
-    return isCheckIn?.call();
+    return addPermissions?.call(date, reason, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? isCheckIn,
+    TResult Function(String date, String reason, XFile? image)? addPermissions,
     required TResult orElse(),
   }) {
-    if (isCheckIn != null) {
-      return isCheckIn();
+    if (addPermissions != null) {
+      return addPermissions(date, reason, image);
     }
     return orElse();
   }
@@ -246,45 +293,55 @@ class _$IsCheckInImpl implements _IsCheckIn {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_IsCheckIn value) isCheckIn,
+    required TResult Function(_AddPermissions value) addPermissions,
   }) {
-    return isCheckIn(this);
+    return addPermissions(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_IsCheckIn value)? isCheckIn,
+    TResult? Function(_AddPermissions value)? addPermissions,
   }) {
-    return isCheckIn?.call(this);
+    return addPermissions?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_IsCheckIn value)? isCheckIn,
+    TResult Function(_AddPermissions value)? addPermissions,
     required TResult orElse(),
   }) {
-    if (isCheckIn != null) {
-      return isCheckIn(this);
+    if (addPermissions != null) {
+      return addPermissions(this);
     }
     return orElse();
   }
 }
 
-abstract class _IsCheckIn implements IsCheckdinEvent {
-  const factory _IsCheckIn() = _$IsCheckInImpl;
+abstract class _AddPermissions implements PermissionsEvent {
+  const factory _AddPermissions(
+      {required final String date,
+      required final String reason,
+      required final XFile? image}) = _$AddPermissionsImpl;
+
+  String get date;
+  String get reason;
+  XFile? get image;
+  @JsonKey(ignore: true)
+  _$$AddPermissionsImplCopyWith<_$AddPermissionsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$IsCheckdinState {
+mixin _$PermissionsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StatusAbsent data) loaded,
+    required TResult Function() loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -292,7 +349,7 @@ mixin _$IsCheckdinState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(StatusAbsent data)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -300,7 +357,7 @@ mixin _$IsCheckdinState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StatusAbsent data)? loaded,
+    TResult Function()? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -333,16 +390,16 @@ mixin _$IsCheckdinState {
 }
 
 /// @nodoc
-abstract class $IsCheckdinStateCopyWith<$Res> {
-  factory $IsCheckdinStateCopyWith(
-          IsCheckdinState value, $Res Function(IsCheckdinState) then) =
-      _$IsCheckdinStateCopyWithImpl<$Res, IsCheckdinState>;
+abstract class $PermissionsStateCopyWith<$Res> {
+  factory $PermissionsStateCopyWith(
+          PermissionsState value, $Res Function(PermissionsState) then) =
+      _$PermissionsStateCopyWithImpl<$Res, PermissionsState>;
 }
 
 /// @nodoc
-class _$IsCheckdinStateCopyWithImpl<$Res, $Val extends IsCheckdinState>
-    implements $IsCheckdinStateCopyWith<$Res> {
-  _$IsCheckdinStateCopyWithImpl(this._value, this._then);
+class _$PermissionsStateCopyWithImpl<$Res, $Val extends PermissionsState>
+    implements $PermissionsStateCopyWith<$Res> {
+  _$PermissionsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -359,7 +416,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$IsCheckdinStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$PermissionsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -373,7 +430,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'IsCheckdinState.initial()';
+    return 'PermissionsState.initial()';
   }
 
   @override
@@ -390,7 +447,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StatusAbsent data) loaded,
+    required TResult Function() loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -401,7 +458,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(StatusAbsent data)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -412,7 +469,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StatusAbsent data)? loaded,
+    TResult Function()? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -460,7 +517,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements IsCheckdinState {
+abstract class _Initial implements PermissionsState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -473,7 +530,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$IsCheckdinStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$PermissionsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -487,7 +544,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'IsCheckdinState.loading()';
+    return 'PermissionsState.loading()';
   }
 
   @override
@@ -504,7 +561,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StatusAbsent data) loaded,
+    required TResult Function() loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -515,7 +572,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(StatusAbsent data)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -526,7 +583,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StatusAbsent data)? loaded,
+    TResult Function()? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -574,7 +631,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements IsCheckdinState {
+abstract class _Loading implements PermissionsState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -583,71 +640,45 @@ abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({StatusAbsent data});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$IsCheckdinStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$PermissionsStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$LoadedImpl(
-      null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as StatusAbsent,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.data);
-
-  @override
-  final StatusAbsent data;
+  const _$LoadedImpl();
 
   @override
   String toString() {
-    return 'IsCheckdinState.loaded(data: $data)';
+    return 'PermissionsState.loaded()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            (identical(other.data, data) || other.data == data));
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StatusAbsent data) loaded,
+    required TResult Function() loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(data);
+    return loaded();
   }
 
   @override
@@ -655,10 +686,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(StatusAbsent data)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(data);
+    return loaded?.call();
   }
 
   @override
@@ -666,12 +697,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StatusAbsent data)? loaded,
+    TResult Function()? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(data);
+      return loaded();
     }
     return orElse();
   }
@@ -714,13 +745,8 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements IsCheckdinState {
-  const factory _Loaded(final StatusAbsent data) = _$LoadedImpl;
-
-  StatusAbsent get data;
-  @JsonKey(ignore: true)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _Loaded implements PermissionsState {
+  const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
@@ -734,7 +760,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$IsCheckdinStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$PermissionsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -764,7 +790,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'IsCheckdinState.error(message: $message)';
+    return 'PermissionsState.error(message: $message)';
   }
 
   @override
@@ -789,7 +815,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StatusAbsent data) loaded,
+    required TResult Function() loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -800,7 +826,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(StatusAbsent data)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -811,7 +837,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StatusAbsent data)? loaded,
+    TResult Function()? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -859,7 +885,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements IsCheckdinState {
+abstract class _Error implements PermissionsState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
