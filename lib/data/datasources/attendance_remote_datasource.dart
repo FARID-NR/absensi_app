@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:absensi_app/core/constants/server.dart';
 import 'package:absensi_app/data/datasources/auth_local_datasource.dart';
 import 'package:absensi_app/data/models/request/checkinout_request_model.dart';
+import 'package:absensi_app/data/models/response/attendance_history_response_model.dart';
 import 'package:absensi_app/data/models/response/checkinout_response_model.dart';
 import 'package:absensi_app/data/models/response/company_response_model.dart';
 import 'package:dartz/dartz.dart';
@@ -81,6 +82,24 @@ class AttendanceRemoteDatasource {
       return Right(CheckInOutResponseModel.fromJson(response.body));
     } else {
       return Left('Failed to checkout');
+    }
+  }
+
+  Future<Either<String, AttendanceHistoryResponseModel>> getAttendance(String date) async {
+    final authData = await AuthLocalDatasource().getAuthData();
+    final url = Uri.parse('${Variables.baseUrl}/api/api-attendances?date=$date');
+    final response = await http.get(
+      url,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${authData?.token}'
+      },
+    );
+    if (response.statusCode == 200) {
+      return Right(AttendanceHistoryResponseModel.fromJson(response.body));
+    } else {
+      return Left(response.body);
     }
   }
 }

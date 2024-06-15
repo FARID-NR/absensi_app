@@ -9,6 +9,7 @@ import 'package:absensi_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:absensi_app/presentation/auth/pages/splash_page.dart';
 import 'package:absensi_app/presentation/home/bloc/checkin_attendance/checkin_attendance_bloc.dart';
 import 'package:absensi_app/presentation/home/bloc/checkout_attendance/checkout_attendance_bloc.dart';
+import 'package:absensi_app/presentation/home/bloc/get_attendance_by_date/get_attendances_bloc.dart';
 import 'package:absensi_app/presentation/home/bloc/get_company/get_company_bloc.dart';
 import 'package:absensi_app/presentation/home/bloc/is_checkdin/is_checkdin_bloc.dart';
 import 'package:absensi_app/presentation/home/bloc/permissions/permissions_bloc.dart';
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => PermissionsBloc(PermissionRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => GetAttendancesBloc(AttendanceRemoteDatasource()),
         ),
       ],
       child: MaterialApp(

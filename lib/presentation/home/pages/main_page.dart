@@ -1,4 +1,5 @@
 import 'package:absensi_app/core/core.dart';
+import 'package:absensi_app/presentation/home/pages/history_page.dart';
 import 'package:absensi_app/presentation/home/pages/home_page.dart';
 import 'package:absensi_app/presentation/home/pages/setting_page.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   final _widgets = [
     const HomePage(),
-    const Center(child: Text("History Page")),
+    const HistoryPage(),
     const SettingPage(),
     const Center(child: Text("Profile Page")),
   ];

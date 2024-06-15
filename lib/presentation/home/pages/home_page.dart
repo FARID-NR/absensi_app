@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:antifakegps/antifakegps.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
 
 import '../../../core/core.dart';
@@ -234,32 +235,6 @@ class _HomePageState extends State<HomePage> {
                             label: 'Datang',
                             iconPath: Assets.icons.menu.datang.path,
                             onPressed: () async {
-                              // // Deteksin lokasi palsu
-                              // bool isFakeLocation = (await Antifakegps().detectFakeLocation())!;
-
-                              // // Jika lokasi palsu terdeteksi
-                              // if (isFakeLocation) {
-                              //   // Tampilkan peringatan lokasi palsu
-                              //   showDialog(
-                              //     context: context,
-                              //     builder: (BuildContext context) {
-                              //       return AlertDialog(
-                              //         title: const Text('Warning'),
-                              //         content: const Text('Lokasi yang anda gunakan palsu'),
-                              //         actions: [
-                              //           TextButton(
-                              //             onPressed: () {
-                              //               Navigator.of(context).pop();
-                              //             },
-                              //             child: const Text('OK'),
-                              //           ),
-                              //         ],
-                              //       );
-                              //     }
-                              //   );
-                              // } else {
-                              //   // Jika lokasi benar
-
                               final distanceKm =
                                   RadiusCalculate.calculateDistance(
                                       latitude ?? 0.0,
@@ -268,6 +243,18 @@ class _HomePageState extends State<HomePage> {
                                       longitudePoint);
 
                               print('jarak radius:  $distanceKm');
+
+                              final posisi = await Geolocator.getCurrentPosition();
+
+                              if (posisi.isMocked) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Lokasi anda palsu'),
+                                    backgroundColor: AppColors.red,
+                                  ),
+                                );
+                                return;
+                              }
 
                               if (distanceKm > radiusPoint) {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -333,6 +320,18 @@ class _HomePageState extends State<HomePage> {
                                       longitudePoint);
 
                               print('jarak radius:  $distanceKm');
+
+                              final posisi = await Geolocator.getCurrentPosition();
+
+                              if (posisi.isMocked) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Lokasi anda palsu'),
+                                    backgroundColor: AppColors.red,
+                                  ),
+                                );
+                                return;
+                              }
 
                               if (distanceKm > radiusPoint) {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -409,7 +408,7 @@ class _HomePageState extends State<HomePage> {
                               loaded: (data) => double.parse(data.radius!),
                             );
                             return Button.filled(
-                              onPressed: () {
+                              onPressed: () async {
                                 final distanceKm =
                                     RadiusCalculate.calculateDistance(
                                         latitude ?? 0.0,
@@ -418,6 +417,18 @@ class _HomePageState extends State<HomePage> {
                                         longitudePoint);
 
                                 print('jarak radius:  $distanceKm');
+
+                                final posisi = await Geolocator.getCurrentPosition();
+
+                                if (posisi.isMocked) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Lokasi anda palsu'),
+                                      backgroundColor: AppColors.red,
+                                    ),
+                                  );
+                                  return;
+                                }
 
                                 if (distanceKm > radiusPoint) {
                                   ScaffoldMessenger.of(context).showSnackBar(
