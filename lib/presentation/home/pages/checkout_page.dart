@@ -370,46 +370,46 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(16.0),
-                      decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.47),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Absensi Datang',
-                                style: TextStyle(
-                                  color: AppColors.white,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              Text(
-                                'Kantor',
-                                style: TextStyle(
-                                  color: AppColors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              context.push(LocationPage(
-                                latitude: latitude,
-                                longitude: longitude,
-                              ));
-                            },
-                            child:
-                                Assets.images.seeLocation.image(height: 30.0),
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Container(
+                    //   padding: const EdgeInsets.all(16.0),
+                    //   decoration: BoxDecoration(
+                    //     color: AppColors.primary.withOpacity(0.47),
+                    //     borderRadius: BorderRadius.circular(10.0),
+                    //   ),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       const Column(
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: [
+                    //           Text(
+                    //             'Absensi Datang',
+                    //             style: TextStyle(
+                    //               color: AppColors.white,
+                    //               fontWeight: FontWeight.w700,
+                    //             ),
+                    //           ),
+                    //           Text(
+                    //             'Kantor',
+                    //             style: TextStyle(
+                    //               color: AppColors.white,
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //       GestureDetector(
+                    //         onTap: () {
+                    //           context.push(LocationPage(
+                    //             latitude: latitude,
+                    //             longitude: longitude,
+                    //           ));
+                    //         },
+                    //         child:
+                    //             Assets.images.seeLocation.image(height: 30.0),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     const SpaceHeight(15.0),
                     const SpaceHeight(15.0),
                     Row(

@@ -16,8 +16,7 @@ class _MainPageState extends State<MainPage> {
   final _widgets = [
     const HomePage(),
     const HistoryPage(),
-    const SettingPage(),
-    const Center(child: Text("Profile Page")),
+    const ProfilePage(),
   ];
 
 
@@ -75,23 +74,23 @@ class _MainPageState extends State<MainPage> {
                 label: 'History',
               ),
               BottomNavigationBarItem(
-                icon: Assets.icons.nav.setting.svg(
+                icon: Assets.icons.nav.profile.svg(
                   colorFilter: ColorFilter.mode(
                     _selectedIndex == 2 ? AppColors.primary : AppColors.grey,
                     BlendMode.srcIn,
                   ),
                 ),
-                label: 'Setting',
-              ),
-              BottomNavigationBarItem(
-                icon: Assets.icons.nav.profile.svg(
-                  colorFilter: ColorFilter.mode(
-                    _selectedIndex == 3 ? AppColors.primary : AppColors.grey,
-                    BlendMode.srcIn,
-                  ),
-                ),
                 label: 'Profile',
               ),
+              // BottomNavigationBarItem(
+              //   icon: Assets.icons.nav.profile.svg(
+              //     colorFilter: ColorFilter.mode(
+              //       _selectedIndex == 3 ? AppColors.primary : AppColors.grey,
+              //       BlendMode.srcIn,
+              //     ),
+              //   ),
+              //   label: 'Profile',
+              // ),
             ],
           ),
         ),

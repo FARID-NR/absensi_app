@@ -365,20 +365,20 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                   ),
-                  MenuButton(
-                    label: 'Izin',
-                    iconPath: Assets.icons.menu.izin.path,
-                    onPressed: () {
-                      context.push(const PermissionPage());
-                    },
-                  ),
-                  MenuButton(
-                    label: 'Catatan',
-                    iconPath: Assets.icons.menu.catatan.path,
-                    onPressed: () {
-                      // context.push(const NotesPage());
-                    },
-                  ),
+                  // MenuButton(
+                  //   label: 'Izin',
+                  //   iconPath: Assets.icons.menu.izin.path,
+                  //   onPressed: () {
+                  //     context.push(const PermissionPage());
+                  //   },
+                  // ),
+                  // MenuButton(
+                  //   label: 'Catatan',
+                  //   iconPath: Assets.icons.menu.catatan.path,
+                  //   onPressed: () {
+                  //     // context.push(const NotesPage());
+                  //   },
+                  // ),
                 ],
               ),
               const SpaceHeight(24.0),

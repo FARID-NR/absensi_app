@@ -7,7 +7,10 @@ import 'package:absensi_app/data/models/response/attendance_history_response_mod
 import 'package:absensi_app/data/models/response/checkinout_response_model.dart';
 import 'package:absensi_app/data/models/response/company_response_model.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+import '../../core/extensions/cpu_memory_usage.dart';
 
 class AttendanceRemoteDatasource {
   Future<Either<String, CompanyResponseModel>> getCompanyProfile() async {
@@ -50,6 +53,8 @@ class AttendanceRemoteDatasource {
   Future<Either<String, CheckInOutResponseModel>> checkin(CheckInOutRequestModel data) async {
     final authData = await AuthLocalDatasource().getAuthData();
     final url = Uri.parse('${Variables.baseUrl}/api/checkin');
+    final startTime = DateTime.now().millisecondsSinceEpoch;
+
     final response = await http.post(
       url,
       headers: {
@@ -59,6 +64,11 @@ class AttendanceRemoteDatasource {
       },
       body: data.toJson()
     );
+
+    final endTime = DateTime.now().millisecondsSinceEpoch;
+    final duration = endTime - startTime;
+    debugPrint('Request data Checkin took: $duration ms');
+
     if (response.statusCode == 200) {
       return Right(CheckInOutResponseModel.fromJson(response.body));
     } else {
@@ -69,6 +79,7 @@ class AttendanceRemoteDatasource {
   Future<Either<String, CheckInOutResponseModel>> checkout(CheckInOutRequestModel data) async {
     final authData = await AuthLocalDatasource().getAuthData();
     final url = Uri.parse('${Variables.baseUrl}/api/checkout');
+    final startTime = DateTime.now().millisecondsSinceEpoch;
     final response = await http.post(
       url,
       headers: {
@@ -78,6 +89,11 @@ class AttendanceRemoteDatasource {
       },
       body: data.toJson()
     );
+
+    final endTime = DateTime.now().millisecondsSinceEpoch;
+    final duration = endTime - startTime;
+    debugPrint('Request data Checkout took: $duration ms');
+
     if (response.statusCode == 200) {
       return Right(CheckInOutResponseModel.fromJson(response.body));
     } else {
@@ -86,8 +102,10 @@ class AttendanceRemoteDatasource {
   }
 
   Future<Either<String, AttendanceHistoryResponseModel>> getAttendance(String date) async {
+    // await CpuMemoryUsage().startLogging("History");
     final authData = await AuthLocalDatasource().getAuthData();
     final url = Uri.parse('${Variables.baseUrl}/api/api-attendances?date=$date');
+    final startTime = DateTime.now().millisecondsSinceEpoch;
     final response = await http.get(
       url,
       headers: {
@@ -96,6 +114,13 @@ class AttendanceRemoteDatasource {
         'Authorization': 'Bearer ${authData?.token}'
       },
     );
+
+    // Hitung durasi
+      final endTime = DateTime.now().millisecondsSinceEpoch; // Akhir pengukuran waktu
+      final duration = endTime - startTime;
+      debugPrint('Request data History took: $duration ms');
+      // await CpuMemoryUsage().stopLogging();
+
     if (response.statusCode == 200) {
       return Right(AttendanceHistoryResponseModel.fromJson(response.body));
     } else {

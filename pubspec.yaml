@@ -56,6 +56,10 @@ dependencies:
   flutter_local_notifications: ^17.1.1
   geolocator: ^12.0.0
   calendar_timeline_sbk: ^1.1.7
+  # cpu_reader: ^3.0.0
+  # system_info_plus: ^0.0.5
+  # system_info2: ^4.0.0
+  # usage: ^4.1.1
 
 
 dev_dependencies:
